@@ -5,8 +5,31 @@
         android:id="@+id/nav_home"
         android:icon="@drawable/ic_home"
         android:title="Home" />
+    <group android:checkableBehavior="single"
+        android:id="@+id/menu_grp_categories">
+        <item android:title="Categories">
+            <menu>
+                <item
+                    android:id="@+id/nav_attendance"
+                    android:icon="@drawable/ic_attendance"
+                    android:title="Attendance" />
+                <item
+                    android:id="@+id/nav_test_marks"
+                    android:icon="@drawable/ic_test_marks"
+                    android:title="Test Marks" />
+                <item
+                    android:id="@+id/nav_result"
+                    android:icon="@drawable/ic_result"
+                    android:title="Result" />
+                <item
+                    android:id="@+id/nav_notification"
+                    android:icon="@drawable/ic_send_notification"
+                    android:title="Notification" />
+            </menu>
+        </item>
+    </group>
 
-    <group android:checkableBehavior="single">
+    <group android:id="@+id/menu_grp_profile">
         <item android:title="Profile">
             <menu>
                 <item

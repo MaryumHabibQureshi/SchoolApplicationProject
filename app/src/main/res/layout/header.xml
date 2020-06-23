@@ -4,10 +4,79 @@
     android:layout_width="match_parent"
     android:layout_height="200dp"
     android:orientation="vertical"
-    android:background="@color/colorAccent"
+    android:background="@color/colorPrimary"
     android:gravity="bottom"
     android:padding="20dp">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Your Profile"
+        android:textSize="30sp"
+        android:textAlignment="center"/>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/img_profile_pic"
+            android:src="@drawable/ic_default_person"
+            android:layout_margin="5dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:visibility="gone"
+                android:id="@+id/tvName"
+                android:layout_margin="2dp"
+                android:textSize="20sp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="email"
+                android:id="@+id/tvEmail"
+                android:visibility="gone"
+                android:layout_margin="2dp"
+                android:textSize="20sp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="phone"
+                android:id="@+id/tvPhone"
+                android:visibility="gone"
+                android:layout_margin="2dp"
+                android:textSize="20sp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="gender"
+                android:id="@+id/tvGender"
+                android:layout_margin="2dp"
+                android:visibility="gone"
+                android:textSize="20sp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="address"
+                android:id="@+id/tvAddress"
+                android:layout_margin="2dp"
+                android:visibility="gone"
+                android:textSize="20sp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </LinearLayout>
