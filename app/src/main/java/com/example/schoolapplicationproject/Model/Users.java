@@ -1,4 +1,4 @@
-package com.example.schoolapplicationproject;
+package com.example.schoolapplicationproject.Model;
 
 public class Users {
     private String email;

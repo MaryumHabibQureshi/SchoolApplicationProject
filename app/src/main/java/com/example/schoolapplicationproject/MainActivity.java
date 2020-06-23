@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity { //this class is teacher da
         userId = firebaseAuth.getCurrentUser().getUid();
         final DocumentReference documentReference = firebaseFirestore.collection("teacher").document(userId);
 
+        binding.navigationView.bringToFront();
         binding.navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -83,7 +84,7 @@ public class MainActivity extends AppCompatActivity { //this class is teacher da
                     case R.id.nav_logout:
                         Toast.makeText(MainActivity.this, "logout", Toast.LENGTH_SHORT).show();
                         FirebaseAuth.getInstance().signOut();
-                        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                        Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
                         startActivity(intent);
                         finish();
                         break;

@@ -1,4 +1,4 @@
-package com.example.schoolapplicationproject;
+package com.example.schoolapplicationproject.Model;
 
 public class Teacher {
     private String name;
