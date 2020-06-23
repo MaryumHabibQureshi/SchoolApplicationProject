@@ -41,6 +41,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
+        FirebaseFirestore.setLoggingEnabled(true);
 
         if(firebaseAuth.getCurrentUser() != null){
             Intent intent = new Intent(getApplicationContext(),MainActivity.class);
@@ -85,24 +86,27 @@ public class RegisterActivity extends AppCompatActivity {
 
 
                             DocumentReference documentReferenceUser = firebaseFirestore.collection("Users").document(userId);
-                            Map <String,Object> userType = new HashMap<>();
-                            userType.put("type",type);
-                            userType.put("email",email);
-                            firebaseFirestore.collection("Users")
-                                    .document(userId)
-                                    .set(userType)
-                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                        @Override
-                                        public void onSuccess(Void aVoid) {
-                                            Log.d(TAG, "DocumentSnapshot successfully written!");
-                                        }
-                                    })
-                                    .addOnFailureListener(new OnFailureListener() {
-                                        @Override
-                                        public void onFailure(@NonNull Exception e) {
-                                            Log.w(TAG, "Error writing document", e);
-                                        }
-                                    });
+                            Users userType = new Users(email,type);
+
+                            try {
+                                firebaseFirestore.collection("Users")
+                                        .document(userId)
+                                        .set(userType)
+                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void aVoid) {
+                                                Log.d(TAG, "onSuccess: User created.");
+                                            }
+                                        })
+                                        .addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                Log.d(TAG, "onFailure: User not created.Error: "+e.toString());
+                                            }
+                                        });
+                            }catch (Exception e){
+                                Log.d(TAG, "onComplete: "+e.getMessage());
+                            }
 
                             DocumentReference documentReference;
                             if(type.equals("Teacher")){

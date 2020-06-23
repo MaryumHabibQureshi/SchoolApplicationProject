@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,10 @@ import android.widget.Toast;
 import com.example.schoolapplicationproject.databinding.ActivityMainBinding;
 import com.example.schoolapplicationproject.databinding.HeaderBinding;
 import com.example.schoolapplicationproject.databinding.TeacherDashboardRwLayoutBinding;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
@@ -36,6 +41,7 @@ public class MainActivity extends AppCompatActivity { //this class is teacher da
     private FirebaseAuth firebaseAuth;
     private FirebaseFirestore firebaseFirestore;
     private String userId;
+    private static final String TAG = "login";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,22 +94,31 @@ public class MainActivity extends AppCompatActivity { //this class is teacher da
 
         View headerView = binding.navigationView.getHeaderView(0);
         final HeaderBinding headerBinding = HeaderBinding.bind(headerView);
-        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+
+        documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                headerBinding.tvName.setText(documentSnapshot.getString("name"));
-                headerBinding.tvName.setText(documentSnapshot.getString("email"));
-                String gender = documentSnapshot.getString("gender");
-                String address = documentSnapshot.getString("address");
-                String contact = documentSnapshot.getString("contact");
-                if(!gender.isEmpty()){
-                    headerBinding.tvGender.setText(documentSnapshot.getString("gender"));
+                if (e != null) {
+                    Log.w(TAG, "Listen failed.", e);
+                    return;
                 }
-                if(!address.isEmpty()){
-                    headerBinding.tvAddress.setText(documentSnapshot.getString("address"));
-                }
-                if(!contact.isEmpty()){
-                    headerBinding.tvPhone.setText(documentSnapshot.getString("contact"));
+
+                if (documentSnapshot != null && documentSnapshot.exists()) {
+                    //Log.d(TAG, "Current data: " + documentSnapshot.getData().get("email"));
+                    documentSnapshot.getData().get("name");
+                    headerBinding.tvName.setText((documentSnapshot.getData().get("name")).toString());
+                    headerBinding.tvEmail.setText((documentSnapshot.getData().get("email")).toString());
+                    if(documentSnapshot.getData().get("gender") != null){
+                        headerBinding.tvGender.setText((documentSnapshot.getData().get("gender")).toString());
+                    }
+                    if(documentSnapshot.getData().get("address") != null){
+                        headerBinding.tvGender.setText((documentSnapshot.getData().get("address")).toString());
+                    }
+                    if(documentSnapshot.getData().get("contact") != null){
+                        headerBinding.tvGender.setText((documentSnapshot.getData().get("contact")).toString());
+                    }
+                } else {
+                    Log.d(TAG, "Current data: null");
                 }
             }
         });

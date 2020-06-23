@@ -34,6 +34,13 @@ public class LoginActivity extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
+        FirebaseFirestore.setLoggingEnabled(true);
+
+        if(firebaseAuth.getCurrentUser() != null){
+            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
 
         binding.tvRegister.setOnClickListener(new View.OnClickListener() {
             @Override
