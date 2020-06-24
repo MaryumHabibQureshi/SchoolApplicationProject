@@ -1,4 +1,4 @@
-package com.example.schoolapplicationproject;
+package com.example.schoolapplicationproject.RecyclerViews;
 
 public class TeacherDashboardLayout {
     private int icon;

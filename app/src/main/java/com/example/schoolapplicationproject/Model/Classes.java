@@ -2,17 +2,17 @@ package com.example.schoolapplicationproject.Model;
 
 import java.util.ArrayList;
 
-public class Class {
+public class Classes {
     private String teacher;
     private String className;
     private String subject;
     private int year;
     private ArrayList<String> students;
 
-    public Class() {
+    public Classes() {
     }
 
-    public Class(String teacher, String className, String subject, int year, ArrayList<String> students) {
+    public Classes(String teacher, String className, String subject, int year, ArrayList<String> students) {
         this.teacher = teacher;
         this.className = className;
         this.subject = subject;

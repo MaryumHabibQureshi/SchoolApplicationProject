@@ -1,6 +1,8 @@
-package com.example.schoolapplicationproject;
+package com.example.schoolapplicationproject.RecyclerViews;
 
+import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -12,14 +14,19 @@ import java.util.ArrayList;
 
 public class TeacherDashboardAdapter extends RecyclerView.Adapter<TeacherDashboardAdapter.MyViewHolder>{
     private ArrayList<TeacherDashboardLayout> arrayList;
-    private OnItemClickListener mListener;
+    private OnItemSelected activity;
 
-    public interface OnItemClickListener{
+    public interface OnItemSelected {
         void onItemClick(int position);
     }
 
-    public void setOnItemClickListener(OnItemClickListener listener){
-        mListener = listener;
+    public void setOnItemClickListener(OnItemSelected listener){
+        activity = listener;
+    }
+
+    public TeacherDashboardAdapter(Context context, ArrayList<TeacherDashboardLayout> arrayList){
+        this.arrayList = arrayList;
+        setOnItemClickListener((OnItemSelected) context);
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
@@ -30,12 +37,13 @@ public class TeacherDashboardAdapter extends RecyclerView.Adapter<TeacherDashboa
             super(binding.getRoot());
             this.binding = binding;
 
-            
+            binding.getRoot().setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    activity.onItemClick(arrayList.indexOf((TeacherDashboardLayout) v.getTag()));
+                }
+            });
         }
-    }
-
-    public TeacherDashboardAdapter(ArrayList<TeacherDashboardLayout> arrayList){
-        this.arrayList = arrayList;
     }
 
     @NonNull
@@ -47,6 +55,7 @@ public class TeacherDashboardAdapter extends RecyclerView.Adapter<TeacherDashboa
 
     @Override
     public void onBindViewHolder(TeacherDashboardAdapter.MyViewHolder holder, int position){
+        holder.itemView.setTag(arrayList.get(position));
         holder.binding.ivTeacherDashboardRwLayout.setImageResource(arrayList.get(position).getIcon());
         holder.binding.tvTeacherDashboardRwLayout.setText(arrayList.get(position).getTitle());
     }

@@ -4,24 +4,22 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.schoolapplicationproject.Fragments.FragmentAttendance;
+import com.example.schoolapplicationproject.Fragments.FragmentTeacherDashboard;
+import com.example.schoolapplicationproject.RecyclerViews.TeacherDashboardAdapter;
+import com.example.schoolapplicationproject.RecyclerViews.TeacherDashboardLayout;
 import com.example.schoolapplicationproject.databinding.ActivityMainBinding;
 import com.example.schoolapplicationproject.databinding.HeaderBinding;
-import com.example.schoolapplicationproject.databinding.TeacherDashboardRwLayoutBinding;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
@@ -31,9 +29,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
-public class MainActivity extends AppCompatActivity { //this class is teacher dashboard
+public class MainActivity extends AppCompatActivity implements TeacherDashboardAdapter.OnItemSelected { //this class is teacher dashboard
 
     private ActivityMainBinding binding;
     private ArrayList<TeacherDashboardLayout> teacherDashboardLayoutArrayList;
@@ -42,6 +39,8 @@ public class MainActivity extends AppCompatActivity { //this class is teacher da
     private FirebaseFirestore firebaseFirestore;
     private String userId;
     private static final String TAG = "login";
+    private FragmentManager fragmentManager;
+    private FragmentTransaction fragmentTransaction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +53,10 @@ public class MainActivity extends AppCompatActivity { //this class is teacher da
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
+
+        fragmentManager = getSupportFragmentManager();
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.container_frame_layout,new FragmentTeacherDashboard()).commit();
 
         userId = firebaseAuth.getCurrentUser().getUid();
         final DocumentReference documentReference = firebaseFirestore.collection("teacher").document(userId);
@@ -68,6 +71,7 @@ public class MainActivity extends AppCompatActivity { //this class is teacher da
                         break;
                     case R.id.nav_attendance:
                         Toast.makeText(MainActivity.this, "attendance", Toast.LENGTH_SHORT).show();
+
                         break;
                     case R.id.nav_test_marks:
                         Toast.makeText(MainActivity.this, "test marks", Toast.LENGTH_SHORT).show();
@@ -89,7 +93,7 @@ public class MainActivity extends AppCompatActivity { //this class is teacher da
                         finish();
                         break;
                 }
-                return false;
+                return true;
             }
         });
 
@@ -105,8 +109,6 @@ public class MainActivity extends AppCompatActivity { //this class is teacher da
                 }
 
                 if (documentSnapshot != null && documentSnapshot.exists()) {
-                    //Log.d(TAG, "Current data: " + documentSnapshot.getData().get("email"));
-                    documentSnapshot.getData().get("name");
                     headerBinding.tvName.setText((documentSnapshot.getData().get("name")).toString());
                     headerBinding.tvEmail.setText((documentSnapshot.getData().get("email")).toString());
                     if(documentSnapshot.getData().get("gender") != null){
@@ -124,22 +126,38 @@ public class MainActivity extends AppCompatActivity { //this class is teacher da
             }
         });
 
-        teacherDashboardLayoutArrayList = new ArrayList<>();
-        addingTeacherDashboardLayout();
 
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-        binding.teacherDashboardRw.setLayoutManager(layoutManager);
-        binding.teacherDashboardRw.setAdapter(new TeacherDashboardAdapter(teacherDashboardLayoutArrayList));
+
 
 
     }
-    private void addingTeacherDashboardLayout(){
-        teacherDashboardLayoutArrayList.add(new TeacherDashboardLayout(R.drawable.ic_attendance," Attendance"));
-        teacherDashboardLayoutArrayList.add(new TeacherDashboardLayout(R.drawable.ic_test_marks,"Upload Marks of Test"));
-        teacherDashboardLayoutArrayList.add(new TeacherDashboardLayout(R.drawable.ic_result,"Upload Result"));
-        teacherDashboardLayoutArrayList.add(new TeacherDashboardLayout(R.drawable.ic_schedule,"Schedule a Meeting"));
-        teacherDashboardLayoutArrayList.add(new TeacherDashboardLayout(R.drawable.ic_send_notification,"Send a Notification"));
+    public void onItemClick(int index){
+        switch (index){
+            case 0:
+                fragmentManager = getSupportFragmentManager();
+                fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.container_frame_layout,new FragmentAttendance()).commit();
+                Toast.makeText(this, "attend"+index, Toast.LENGTH_SHORT).show();
+                break;
+            case 1:
+                Toast.makeText(this, "mark"+index, Toast.LENGTH_SHORT).show();
+                break;
+            case 2:
+                Toast.makeText(this, "result"+index, Toast.LENGTH_SHORT).show();
+                break;
+            case 3:
+                Toast.makeText(this, "meet"+index, Toast.LENGTH_SHORT).show();
+                break;
+            case 4:
+                Toast.makeText(this, "notification"+index, Toast.LENGTH_SHORT).show();
+                break;
+            default:
+                Toast.makeText(this, "default"+index, Toast.LENGTH_SHORT).show();
+                break;
+        }
+
     }
+
     private void setUpToolbar(){
         setSupportActionBar(binding.teacherToolbarMain);
         actionBarDrawerToggle = new ActionBarDrawerToggle(this,binding.drawerLayout,binding.teacherToolbarMain,R.string.app_name,R.string.app_name);
