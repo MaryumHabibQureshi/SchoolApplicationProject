@@ -75,7 +75,7 @@ public class RegisterActivity extends AppCompatActivity {
                     binding.tfPassword.setError("Password must have minimum 6 characters.");
                     return;
                 }
-                binding.progressBar.setVisibility(View.VISIBLE);
+
 
                 firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
