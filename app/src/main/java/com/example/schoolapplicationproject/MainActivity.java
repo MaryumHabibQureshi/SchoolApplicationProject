@@ -16,6 +16,8 @@ import android.widget.Toast;
 
 import com.example.schoolapplicationproject.Fragments.FragmentAttendance;
 import com.example.schoolapplicationproject.Fragments.FragmentTeacherDashboard;
+import com.example.schoolapplicationproject.RecyclerViews.ParentDashboardAdapter;
+import com.example.schoolapplicationproject.RecyclerViews.ParentDashboardLayout;
 import com.example.schoolapplicationproject.RecyclerViews.TeacherDashboardAdapter;
 import com.example.schoolapplicationproject.RecyclerViews.TeacherDashboardLayout;
 import com.example.schoolapplicationproject.databinding.ActivityMainBinding;
@@ -30,10 +32,11 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements TeacherDashboardAdapter.OnItemSelected { //this class is teacher dashboard
+public class MainActivity extends AppCompatActivity implements TeacherDashboardAdapter.OnItemSelected, ParentDashboardAdapter.OnItemSelected { //this class is teacher dashboard
 
     private ActivityMainBinding binding;
     private ArrayList<TeacherDashboardLayout> teacherDashboardLayoutArrayList;
+    private ArrayList<ParentDashboardLayout> parentDashboardLayoutArrayList;
     private ActionBarDrawerToggle actionBarDrawerToggle;
     private FirebaseAuth firebaseAuth;
     private FirebaseFirestore firebaseFirestore;

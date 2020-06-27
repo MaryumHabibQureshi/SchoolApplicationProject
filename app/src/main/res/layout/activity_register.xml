@@ -117,16 +117,20 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/tvRegister"
-        android:layout_width="294dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="608dp"
-        android:text="Not a user? Sign Up here."
+        android:id="@+id/tvLogin"
+        android:layout_width="317dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="616dp"
+        android:layout_marginEnd="32dp"
+        android:text="Already a user? Sign In here."
+        android:textAlignment="center"
         android:textColor="@android:color/tertiary_text_light"
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

@@ -52,9 +52,9 @@ public class RegisterActivity extends AppCompatActivity {
         binding.btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String name = binding.tfName.getEditText().getText().toString().trim();
-                final String email = binding.tfEmail.getEditText().getText().toString().trim();
-                String password = binding.tfPassword.getEditText().getText().toString().trim();
+                final String name = binding.tfName.getText().toString().trim();
+                final String email = binding.tfEmail.getText().toString().trim();
+                String password = binding.tfPassword.getText().toString().trim();
                 int radioButton = binding.radioGroupType.getCheckedRadioButtonId();
                 RadioButton radioBtn = findViewById(radioButton);
                 final String type = radioBtn.getText().toString();
@@ -135,7 +135,7 @@ public class RegisterActivity extends AppCompatActivity {
                             finish();
                         }
                         else{
-                            binding.progressBar.setVisibility(View.GONE);
+
                             Toast.makeText(RegisterActivity.this, "Registration Failed. "+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
