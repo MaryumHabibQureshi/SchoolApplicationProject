@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:icon="@drawable/ic_help"
-        android:title="help"
+        android:title="@string/help"
         android:id="@+id/menuItemHelp"
         app:showAsAction="always" />
 </menu>

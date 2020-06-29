@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    tools:context=".Fragments.FragmentProfile">
+
+    <EditText
+        android:id="@+id/etName"
+        android:layout_width="347dp"
+        android:layout_height="50dp"
+        android:ems="10"
+        android:layout_gravity="center"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:padding="16dp"
+        android:background="@drawable/round_border"
+        android:hint="@string/edit_your_name"
+        android:inputType="none"
+        android:enabled="false" />
+
+
+    <EditText
+        android:id="@+id/etAddress"
+        android:layout_width="347dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:ems="10"
+        android:padding="16dp"
+        android:background="@drawable/round_border"
+        android:inputType="none"
+        android:enabled="false"
+        android:hint="@string/edit_your_address" />
+
+    <EditText
+        android:id="@+id/etContact"
+        android:layout_width="347dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:padding="16dp"
+        android:background="@drawable/round_border"
+        android:ems="10"
+        android:inputType="none"
+        android:enabled="false"
+        android:hint="@string/edit_your_contactno" />
+
+    <EditText
+        android:id="@+id/etEmail"
+        android:layout_width="347dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:padding="16dp"
+        android:background="@drawable/round_border"
+        android:ems="10"
+        android:inputType="none"
+        android:enabled="false"
+        android:hint="@string/edit_your_email_address" />
+
+    <EditText
+        android:id="@+id/etGender"
+        android:layout_width="347dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:padding="16dp"
+        android:background="@drawable/round_border"
+        android:ems="10"
+        android:inputType="none"
+        android:enabled="false"
+        android:hint="@string/edit_your_gender" />
+
+    <Button
+        android:id="@+id/btnProfile"
+        android:layout_width="347dp"
+        android:layout_height="53dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/round_btn"
+        android:padding="5dp"
+        android:text="@string/profile_edit"
+        android:textColor="#ffffff"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="347dp"
+        android:layout_height="53dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:padding="5dp"
+        android:text="@string/save_profile"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:visibility="gone"
+        android:background="@drawable/round_btn" />
+
+    <EditText
+        android:id="@+id/etChildren"
+        android:layout_width="347dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:padding="16dp"
+        android:inputType="number"
+        android:background="@drawable/round_border"
+        android:ems="10"
+        android:hint="@string/enter_your_child_s_student_key" />
+
+    <TextView
+        android:id="@+id/tvChildName"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="29dp"
+        android:layout_marginRight="29dp"
+        android:textSize="14sp"
+        android:background="@drawable/round_border"
+        android:ems="10"
+        android:padding="4dp"
+        android:textAlignment="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+
+        android:layout_width="347dp"
+        android:layout_height="53dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="8dp"
+        android:id="@+id/btnAddChild"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:padding="5dp"
+        android:text="@string/add_child"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:background="@drawable/round_btn" />
+
+</LinearLayout>

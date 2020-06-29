@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar" >
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:statusBarColor">#00000000</item>
+    </style>
+
+    <style name="FullScreenDialogTheme" parent="Theme.MaterialComponents.Light.DialogWhenLarge">
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:paddingRight">0dp</item>
+        <item name="android:paddingLeft">0dp</item>
+        <item name="android:layout_width">match_parent</item>
     </style>
 </resources>

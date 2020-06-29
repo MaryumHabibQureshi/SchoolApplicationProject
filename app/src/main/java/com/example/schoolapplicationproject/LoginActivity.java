@@ -36,12 +36,6 @@ public class LoginActivity extends AppCompatActivity {
         firebaseFirestore = FirebaseFirestore.getInstance();
         FirebaseFirestore.setLoggingEnabled(true);
 
-        if(firebaseAuth.getCurrentUser() != null){
-            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-            startActivity(intent);
-            finish();
-        }
-
         binding.tvRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,25 +48,24 @@ public class LoginActivity extends AppCompatActivity {
         binding.btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = binding.tfEmail.getEditText().getText().toString();
-                String password = binding.tfPassword.getEditText().getText().toString();
+                String email = binding.tfEmail.getText().toString();
+                String password = binding.tfPassword.getText().toString();
                 int radioButton = binding.radioGroupType.getCheckedRadioButtonId();
                 RadioButton radioBtn = findViewById(radioButton);
-                String type = radioBtn.getText().toString();
+                final String typeRB = radioBtn.getText().toString();
 
-                if(email.isEmpty()){
+                if (email.isEmpty()) {
                     binding.tfEmail.setError("Email is required.");
                     return;
                 }
-                if(password.isEmpty()){
+                if (password.isEmpty()) {
                     binding.tfPassword.setError("Password is required.");
                     return;
                 }
-                if(password.length() < 6){
+                if (password.length() < 6) {
                     binding.tfPassword.setError("Password must have minimum 6 characters.");
                     return;
                 }
-                binding.progressBar.setVisibility(View.VISIBLE);
 
                 firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -86,15 +79,14 @@ public class LoginActivity extends AppCompatActivity {
                                     DocumentSnapshot document = task.getResult();
                                     if(document.exists()){
                                         String type = document.getString("type");
-                                        if(type.equals("Teacher")){
+                                        if (typeRB.equals(type) && type.equals("Teacher")) {
                                             Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                                            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                             startActivity(intent);
                                             finish();
-                                        }
-                                        else if(type.equals("Parent")){
+                                        } else if (typeRB.equals(type) && type.equals("Parent")) {
                                             Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                                            Intent intent = new Intent(getApplicationContext(),ParentDashboard.class);
+                                            Intent intent = new Intent(getApplicationContext(), ParentMain.class);
                                             startActivity(intent);
                                             finish();
                                         }
@@ -104,7 +96,6 @@ public class LoginActivity extends AppCompatActivity {
                         }
                         else {
                             Toast.makeText(LoginActivity.this, "Registration Failed. "+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                            binding.progressBar.setVisibility(View.GONE);
                         }
                     }
                 });

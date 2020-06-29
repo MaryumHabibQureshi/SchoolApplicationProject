@@ -14,19 +14,19 @@ import java.util.ArrayList;
 
 public class ParentDashboardAdapter extends RecyclerView.Adapter<ParentDashboardAdapter.MyViewHolder>{
     private ArrayList<ParentDashboardLayout> arrayList;
-    private ParentDashboardAdapter.OnItemSelected activity;
+    private OnItemSelected activity;
 
     public interface OnItemSelected {
         void onItemClick(int position);
     }
 
-    public void setOnItemClickListener(ParentDashboardAdapter.OnItemSelected listener){
+    public void setOnItemClickListener(OnItemSelected listener) {
         activity = listener;
     }
 
     public ParentDashboardAdapter(Context context, ArrayList<ParentDashboardLayout> arrayList){
         this.arrayList = arrayList;
-        setOnItemClickListener((ParentDashboardAdapter.OnItemSelected) context);
+        setOnItemClickListener((OnItemSelected) context);
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
@@ -40,7 +40,7 @@ public class ParentDashboardAdapter extends RecyclerView.Adapter<ParentDashboard
             binding.getRoot().setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    activity.onItemClick(arrayList.indexOf((ParentDashboardLayout) v.getTag()));
+                    activity.onItemClick(arrayList.indexOf(v.getTag()));
                 }
             });
         }

@@ -1,9 +1,20 @@
 package com.example.schoolapplicationproject.RecyclerViews;
 
 public class TeacherClassesLayout {
+
+
+    private String classId;
     private String name;
     private String subject;
     private int year;
+
+    public String getClassId() {
+        return classId;
+    }
+
+    public void setClassId(String classId) {
+        this.classId = classId;
+    }
 
     public String getName() {
         return name;
@@ -29,7 +40,8 @@ public class TeacherClassesLayout {
         this.year = year;
     }
 
-    public TeacherClassesLayout(String name, String subject, int year) {
+    public TeacherClassesLayout(String classId, String name, String subject, int year) {
+        this.classId = classId;
         this.name = name;
         this.subject = subject;
         this.year = year;

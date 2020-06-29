@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
     app:cardCornerRadius="5dp">
-    
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/tv_teacher_dashboard_rw_layout"
-            android:text="Text"
+            android:text="@string/text"
             android:textAlignment="center"
             android:textSize="30sp" />
 

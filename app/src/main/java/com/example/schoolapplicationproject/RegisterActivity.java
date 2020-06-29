@@ -43,12 +43,6 @@ public class RegisterActivity extends AppCompatActivity {
         firebaseFirestore = FirebaseFirestore.getInstance();
         FirebaseFirestore.setLoggingEnabled(true);
 
-        if(firebaseAuth.getCurrentUser() != null){
-            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-            startActivity(intent);
-            finish();
-        }
-
         binding.btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -2,46 +2,46 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/nav_home"
+        android:id="@+id/nav_home_p"
         android:icon="@drawable/ic_home"
-        android:title="Home" />
+        android:title="@string/home" />
     <group android:checkableBehavior="single"
         android:id="@+id/menu_grp_categories">
-        <item android:title="Categories">
+        <item android:title="@string/categories">
             <menu>
                 <item
-                    android:id="@+id/nav_attendance"
+                    android:id="@+id/nav_attendance_p"
                     android:icon="@drawable/ic_attendance"
-                    android:title="Attendance" />
+                    android:title="@string/attendance_report" />
                 <item
-                    android:id="@+id/nav_result"
+                    android:id="@+id/nav_result_p"
                     android:icon="@drawable/ic_report"
-                    android:title="Result" />
+                    android:title="@string/results_report" />
 
                 <item
-                    android:id="@+id/nav_chat"
+                    android:id="@+id/nav_chat_p"
                     android:icon="@drawable/ic_chat"
-                    android:title="Chat" />
+                    android:title="@string/chat" />
                 <item
-                    android:id="@+id/nav_notification"
+                    android:id="@+id/nav_notification_p"
                     android:icon="@drawable/ic_send_notification"
-                    android:title="Notification" />
+                    android:title="@string/notification" />
             </menu>
         </item>
     </group>
 
-    <group android:id="@+id/menu_grp_profile">
-        <item android:title="Profile">
+    <group android:id="@+id/menu_grp_profile_p">
+        <item android:title="@string/profileTitle">
             <menu>
                 <item
-                    android:id="@+id/nav_profile"
+                    android:id="@+id/nav_profile_p"
                     android:icon="@drawable/ic_person"
-                    android:title="profile" />
+                    android:title="@string/profile" />
 
                 <item
-                    android:id="@+id/nav_logout"
+                    android:id="@+id/nav_logout_p"
                     android:icon="@drawable/ic_logout"
-                    android:title="Logout" />
+                    android:title="@string/logout" />
             </menu>
         </item>
     </group>

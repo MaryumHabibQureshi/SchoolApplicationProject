@@ -4,43 +4,43 @@
     <item
         android:id="@+id/nav_home"
         android:icon="@drawable/ic_home"
-        android:title="Home" />
+        android:title="@string/home" />
     <group android:checkableBehavior="single"
         android:id="@+id/menu_grp_categories">
-        <item android:title="Categories">
+        <item android:title="@string/categories">
             <menu>
                 <item
                     android:id="@+id/nav_attendance"
                     android:icon="@drawable/ic_attendance"
-                    android:title="Attendance" />
+                    android:title="@string/attendance" />
                 <item
                     android:id="@+id/nav_test_marks"
                     android:icon="@drawable/ic_test_marks"
-                    android:title="Test Marks" />
+                    android:title="@string/test_marks" />
                 <item
                     android:id="@+id/nav_result"
                     android:icon="@drawable/ic_result"
-                    android:title="Result" />
+                    android:title="@string/result" />
                 <item
                     android:id="@+id/nav_notification"
                     android:icon="@drawable/ic_send_notification"
-                    android:title="Notification" />
+                    android:title="@string/notification" />
             </menu>
         </item>
     </group>
 
     <group android:id="@+id/menu_grp_profile">
-        <item android:title="Profile">
+        <item android:title="@string/profileTitle">
             <menu>
                 <item
                     android:id="@+id/nav_profile"
                     android:icon="@drawable/ic_person"
-                    android:title="profile" />
+                    android:title="@string/profile" />
 
                 <item
                     android:id="@+id/nav_logout"
                     android:icon="@drawable/ic_logout"
-                    android:title="Logout" />
+                    android:title="@string/logout" />
             </menu>
         </item>
     </group>

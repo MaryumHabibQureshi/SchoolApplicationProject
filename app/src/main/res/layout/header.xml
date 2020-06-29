@@ -5,7 +5,7 @@
     android:layout_height="200dp"
     android:orientation="horizontal"
     android:background="@color/colorPrimary"
-    android:gravity="top"
+    android:gravity="center_vertical"
     android:padding="20dp">
         <ImageView
             android:layout_width="60dp"
@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
-            android:layout_gravity="top"
+            android:layout_gravity="center_vertical"
             android:orientation="vertical">
 
             <TextView
