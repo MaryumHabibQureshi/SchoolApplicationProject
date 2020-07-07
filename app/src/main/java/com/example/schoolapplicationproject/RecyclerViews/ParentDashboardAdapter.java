@@ -40,7 +40,7 @@ public class ParentDashboardAdapter extends RecyclerView.Adapter<ParentDashboard
             binding.getRoot().setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    activity.onItemClick(arrayList.indexOf(v.getTag()));
+                    activity.onItemClick(arrayList.indexOf((ParentDashboardLayout) v.getTag()));
                 }
             });
         }

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ChooseTeacherToChatWithActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tb_chooseTeacher"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#00008577"
+        android:fitsSystemWindows="true"
+        android:minHeight="?attr/actionBarSize"
+        app:title="Choose Teacher"
+        android:theme="?attr/actionBarTheme"
+        app:menu="@menu/chat_toolbar_menu" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/parent_choose_teacher_chat_rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        android:padding="5dp"
+        android:scrollbars="vertical" />
+
+</LinearLayout>

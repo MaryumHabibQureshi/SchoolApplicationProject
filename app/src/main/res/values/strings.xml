@@ -54,4 +54,6 @@
     <string name="save_profile">Save Profile</string>
     <string name="error_new_child">This student doesn\'t exist.</string>
     <string name="confirrm_child_added">Child Added.</string>
+    <string name="message_edit_text_hint">Write Something</string>
+    <string name="close">close</string>
 </resources>

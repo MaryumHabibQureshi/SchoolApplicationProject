@@ -30,7 +30,7 @@ public class TeacherClassesAdapter extends RecyclerView.Adapter<TeacherClassView
         holder.binding.getRoot().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int index = arrayList.indexOf(v.getTag());
+                int index = arrayList.indexOf((TeacherClassesLayout) v.getTag());
                 activity.onAttendanceItemClick(index, arrayList.get(index));
             }
         });

@@ -30,12 +30,11 @@ public class TeacherStudentAttendanceAdapter extends RecyclerView.Adapter<Teache
         holder.binding.cbStudentStatus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int index = arrayList.indexOf(v.getTag());
+                int index = arrayList.indexOf((TeacherStudentAttendanceLayout) v.getTag());
                 activity.onStudentItemClick(index, arrayList.get(index));
             }
         });
     }
-
     public void setOnItemClickListener(TeacherStudentAttendanceAdapter.OnStudentSelected listener) {
         activity = listener;
     }

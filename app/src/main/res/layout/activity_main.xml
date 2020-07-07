@@ -42,7 +42,7 @@
                 app:title="DashBoard"
                 android:theme="?attr/actionBarTheme"
                 app:navigationIcon="@drawable/ic_menu"
-                app:menu="@menu/teacher_toolbar_menu_main"/>
+                app:menu="@menu/toolbar_menu_main" />
 
 
         </com.google.android.material.appbar.AppBarLayout>
@@ -52,6 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:id="@+id/main_logo"
             android:orientation="horizontal">
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -64,7 +65,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_marginStart="16dp"
-                    android:text="Learn"
+                    android:text="@string/learn"
                     android:textSize="30sp"
                     app:fontFamily="@font/baloo" />
 
@@ -73,7 +74,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="Start a new Future" />
+                    android:text="@string/start_a_new_future" />
 
             </LinearLayout>
 
@@ -88,25 +89,10 @@
                 app:srcCompat="@drawable/ic_school" />
         </LinearLayout>
 
-        <ScrollView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/teacher_dashboard_rw"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="5dp"
-                    android:padding="5dp"
-                    android:scrollbars="vertical" />
-            </LinearLayout>
-
-        </ScrollView>
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            layout="@layout/main_content_layout" />
 
     </LinearLayout>
 

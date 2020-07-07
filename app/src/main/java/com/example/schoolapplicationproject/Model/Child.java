@@ -8,7 +8,6 @@ public class Child {
     public String toString() {
         return "Student key: " + student_key + ", name: " + name;
     }
-
     public Child() {
     }
 
